@@ -1,0 +1,11 @@
+{
+    "name": "amarmujkic/social-media-app",
+    "autoload": {
+        "psr-4": {
+            "Amarmujkic\\SocialMediaApp\\": "src/"
+        }
+    },
+    "require": {
+        "mikecao/flight": "^2.0"
+    }
+}
