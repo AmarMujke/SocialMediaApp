@@ -8,7 +8,14 @@
     <link rel="stylesheet" href="./css/footer.css">
     <title>Document</title>
 </head>
-<footer class="contair">
-    
+
+<footer class="container-fluid">
+    <div class = "container">
+        <img style = "float:left;" src="./assets/Frame.png" alt="">
+        <p style = "margin:0; font-size:24px;">SEA</p>
+        <p style = "float:right;">2022 SEA All Rights Reserved</p>
+    </div>
 </footer>
+  
+    
 </html>
