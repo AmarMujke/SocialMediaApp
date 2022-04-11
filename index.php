@@ -3,7 +3,8 @@
 include("functions.php");
 include("views/header.php");
 include("views/home.php");
-include("footer.php");
+include("views/footer.php");
+
 
 require 'vendor/autoload.php';
 
