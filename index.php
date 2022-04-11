@@ -1,4 +1,10 @@
 <?php
+
+include("functions.php");
+include("views/header.php");
+include("views/home.php");
+include("footer.php");
+
 require 'vendor/autoload.php';
 
 Flight::route('/', function(){
