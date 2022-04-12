@@ -11,9 +11,9 @@
 
 <footer class="container-fluid">
     <div class = "container">
-        <img style = "float:left;" src="./assets/Frame.png" alt="">
-        <p style = "margin:0; font-size:24px;">SEA</p>
-        <p style = "float:right;">2022 SEA All Rights Reserved</p>
+        <img id = "footerImg" src="./assets/Frame.png" alt="">
+        <p id = "footerLogoText">SEA</p>
+        <p id = "footerRightTxt">©2022 SEA</p>
     </div>
 </footer>
   

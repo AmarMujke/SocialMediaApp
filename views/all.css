@@ -1,0 +1,28 @@
+/* --- Header --- */
+#nav-button {
+  width: 167px;
+  height: 42px;
+  background-color: #02c39a !important;
+  border-radius: 21px;
+  border: none;
+}
+#nav-button:active {
+  border: none;
+  background-color: #02c39a;
+}
+/* --- FOOTER --- */
+#footerLogoText {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  display: inline-block;
+}
+#footerImg {
+  float: left;
+  width: 25px;
+}
+#footerRightTxt {
+  float: right;
+  font-weight: bold;
+  font-size: 16px;
+}
