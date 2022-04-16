@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 
-<footer class="container-fluid">
+<footer class="container-fluid" id="footer">
     <div class = "container">
         <img id = "footerImg" src="./assets/Frame.png" alt="">
         <p id = "footerLogoText">SEA</p>

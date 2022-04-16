@@ -11,6 +11,9 @@
   background-color: #02c39a;
 }
 /* --- FOOTER --- */
+#footer{
+  float:left;
+}
 #footerLogoText {
   margin: 0;
   font-size: 24px;
@@ -25,4 +28,43 @@
   float: right;
   font-weight: bold;
   font-size: 16px;
+}
+
+
+.form-group{
+  width:500px;
+  border: 1px solid #f0f0f0;
+  float: left;
+  min-height: 180px;
+  margin: 2px;
+  padding: 10px;
+  min-width: 117px;
+  position:relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+
+}
+#post{
+  width: 600px;
+  height: 200px;
+  display: flex;
+  
+}
+#post-button{
+  position:absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: #02c39a ;
+} 
+#cancel-button{
+  position:absolute;
+  bottom: 5px;
+  left: 5px;
+  background-color: #02c39a 
+}
+#textForm{
+  resize: none;
+  opacity: 50%;
 }
