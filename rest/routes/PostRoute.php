@@ -13,7 +13,7 @@ Flight::route('GET /posts', function(){
 });
 
 /**
-* List invidiual todo
+* List invidiual post
 */
 Flight::route('GET /posts/@id', function($id){
     $user = Flight::get('User');
@@ -21,7 +21,7 @@ Flight::route('GET /posts/@id', function($id){
 });
 
 /**
-* add todo
+* add post
 */
 Flight::route('POST /posts', function(){
     $user = Flight::get('User');
@@ -29,7 +29,7 @@ Flight::route('POST /posts', function(){
 });
 
 /**
-* update todo
+* update post
 */
 Flight::route('PUT /posts/@id', function($id){
   $data = Flight::request()->data->getData();
