@@ -1,0 +1,55 @@
+.html {
+    width: 100%;
+    height: 100%;
+  }
+  .body {
+    width: 100%;
+    height: 100%;
+  }
+  /* --- Header --- */
+  #nav-button {
+    width: 167px;
+    height: 42px;
+    background-color: #02c39a !important;
+    border-radius: 21px;
+    border: none;
+  }
+  #nav-button:active {
+    border: none;
+    background-color: #058b6e;
+  }
+  /* --- FOOTER --- */
+  #footer {
+    float: left;
+  }
+  #footerLogoText {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+  }
+  #footerImg {
+    float: left;
+    width: 25px;
+  }
+  #footerRightTxt {
+    float: right;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .form-group {
+    width: 500px;
+    border: 1px solid #f0f0f0;
+    float: left;
+    min-height: 180px;
+    margin: 2px;
+    padding: 10px;
+    min-width: 117px;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  Write to Amar Mujkić
+  
