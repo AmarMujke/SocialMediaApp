@@ -16,14 +16,16 @@ Flight::route('GET /posts', function(){
 * List invidiual todo
 */
 Flight::route('GET /posts/@id', function($id){
-  Flight::json(Flight::postService()->get_by_id($id));
+    $user = Flight::get('User');
+  Flight::json(Flight::postService()->get_by_id($user, $id));
 });
 
 /**
 * add todo
 */
 Flight::route('POST /posts', function(){
-  Flight::json(Flight::postService()->add(Flight::request()->data->getData()));
+    $user = Flight::get('User');
+  Flight::json(Flight::postService()->add($user, Flight::request()->data->getData()));
 });
 
 /**
@@ -31,15 +33,21 @@ Flight::route('POST /posts', function(){
 */
 Flight::route('PUT /posts/@id', function($id){
   $data = Flight::request()->data->getData();
-  Flight::json(Flight::postService()->update($id, $data));
+  $user = Flight::get('User');
+  Flight::json(Flight::postService()->update($user, $id, $data));
 });
 
 /**
 * delete todo
 */
 Flight::route('DELETE /posts/@id', function($id){
-  Flight::postService()->delete($id);
+    $user = Flight::get('User');
+  Flight::postService()->delete($user, $id);
   Flight::json(["message" => "deleted"]);
 });
+
+Flight::route('GET /userPost/@id', function($id){
+    Flight::json(Flight::postService()->get_posts_by_user_id($id));
+})
 
 ?>
