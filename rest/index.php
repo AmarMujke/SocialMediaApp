@@ -6,9 +6,12 @@ error_reporting(E_ALL);
 
 require_once __DIR__.'/../vendor/autoload.php';
 require_once __DIR__.'/services/PostService.class.php';
+require_once __DIR__.'/services/UserService.class.php';
+require_once __DIR__.'/dao/UserDao.class.php';
 
-
+Flight::register('userDao', 'UserDao');
 Flight::register('postService', 'PostService');
+Flight::register('userService', 'UserService');
 
 // Flight::map('error', function(Exception $ex){
 //     // Handle error
@@ -23,10 +26,10 @@ Flight::map('query', function($name, $default_value = NULL){
   return urldecode($query_param);
 });
 
-// middleware method for login
+//middleware method for login
 // Flight::route('/*', function(){
-//   //return TRUE;
-//   //perform JWT decode
+  //return TRUE;
+  //perform JWT decode
 //   $path = Flight::request()->url;
 //   if ($path == '/login' || $path == '/docs.json') return TRUE; // exclude login route from middleware
 
@@ -54,7 +57,7 @@ Flight::map('query', function($name, $default_value = NULL){
 // });
 
 require_once __DIR__.'/routes/PostRoute.php';
-
+require_once __DIR__.'/routes/UserRoute.php';
 
 Flight::start();
 ?>
