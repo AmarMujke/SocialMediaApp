@@ -40,9 +40,21 @@ use Firebase\JWT\Key;
 //     }
 // });
 
+// get all users
 Flight::route('GET /users', function(){
   Flight::json(Flight::userService()->get_all());
 });
 
+// get users by id
+Flight::route('GET /users/@id', function($id){
+    $user = Flight::get('User');
+  Flight::json(Flight::userService()->get_by_id($user, $id));
+});
 
+// delete users
+Flight::route('DELETE /users/@id', function($id){
+$user = Flight::get('User');
+  Flight::userService()->delete($user, $id);
+  Flight::json(["message" => "deleted"]);
+})
 ?>
