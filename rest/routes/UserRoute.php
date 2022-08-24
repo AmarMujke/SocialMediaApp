@@ -56,5 +56,11 @@ Flight::route('DELETE /users/@id', function($id){
 $user = Flight::get('User');
   Flight::userService()->delete($user, $id);
   Flight::json(["message" => "deleted"]);
-})
+});
+
+// create new user 
+Flight::route('POST /users', function(){
+  $user = Flight::get('User');
+Flight::json(Flight::userService()->add($user, Flight::request()->data->getData()));
+});
 ?>

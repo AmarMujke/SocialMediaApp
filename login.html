@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>SocialMediaApp</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <div class="container marketing" style="margin-top: 100px; width: 100vh">
+        <!-- Three columns of text below the carousel -->
+        <div class="row" style="border: 1px black solid">
+          <h3 style="text-align: center">Login</h3>
+          <form id="login-form" style="padding: 5%">
+            <div class="mb-3">
+              <label class="form-label">Email address</label>
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                value="amar.mujka@outlook.com"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                value="123"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <p style="float: right">
+              Don't have an account? <a href="#">REGISTER</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </main>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="js/user-service.js"></script>
+    <script type="text/javascript">
+      UserService.init();
+    </script>
+  </body>
+</html>
