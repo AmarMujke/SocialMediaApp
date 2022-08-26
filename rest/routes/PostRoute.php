@@ -38,7 +38,7 @@ Flight::route('PUT /posts/@id', function($id){
 });
 
 /**
-* delete todo
+* delete post
 */
 Flight::route('DELETE /posts/@id', function($id){
     $user = Flight::get('User');
