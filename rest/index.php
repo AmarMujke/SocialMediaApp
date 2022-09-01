@@ -1,4 +1,5 @@
 <?php
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -13,10 +14,10 @@ Flight::register('userDao', 'UserDao');
 Flight::register('postService', 'PostService');
 Flight::register('userService', 'UserService');
 
-Flight::map('error', function(Exception $ex){
-    // Handle error
-    Flight::json(['message' => $ex->getMessage()], 500);
-});
+// Flight::map('error', function(Exception $ex){
+//     // Handle error
+//     Flight::json(['message' => $ex->getMessage()], 500);
+// });
 
 /* utility function for reading query parameters from URL */
 Flight::map('query', function($name, $default_value = NULL){

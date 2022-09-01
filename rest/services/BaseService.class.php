@@ -23,7 +23,7 @@ abstract class BaseService {
     return $this->dao->update($id, $entity);
   }
 
-  public function delete($user, $id){
+  public function delete($id){
     return $this->dao->delete($id);
   }
 }

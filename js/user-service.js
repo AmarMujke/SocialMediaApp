@@ -4,6 +4,7 @@ var UserService = {
     if (token) {
       window.location.replace("index.html");
     }
+
     $("#login-form").validate({
       submitHandler: function (form) {
         var entity = Object.fromEntries(new FormData(form).entries());
@@ -15,6 +16,7 @@ var UserService = {
     $.ajax({
       url: "rest/login",
       type: "POST",
+
       data: JSON.stringify(entity),
       contentType: "application/json",
       dataType: "json",

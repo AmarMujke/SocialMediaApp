@@ -31,6 +31,7 @@ class BaseDao{
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
+
   public function get_by_id($id){
     $stmt = $this->conn->prepare("SELECT * FROM ".$this->table_name." WHERE id = :id");
     $stmt->execute(['id' => $id]);
@@ -43,7 +44,7 @@ class BaseDao{
   */ 
   public function delete($id){
     $stmt = $this->conn->prepare("DELETE FROM ".$this->table_name." WHERE id=:id");
-    $stmt->bindParam(':id', $id); // SQL injection prevention
+    $stmt->bindParam(':id', $id); 
     $stmt->execute();
   }
 

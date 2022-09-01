@@ -1,5 +1,6 @@
 <?php
-
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 // CRUD operations for posts entity
 
 /**
@@ -10,6 +11,10 @@
  */
 Flight::route('GET /posts', function(){
   Flight::json(Flight::postService()->get_all());
+});
+
+Flight::route('GET /postsDesc', function(){
+    Flight::json(Flight::postService()->get_posts_by_id_desc());
 });
 
 /**
@@ -23,14 +28,14 @@ Flight::route('GET /posts/@id', function($id){
 /**
 * add post
 */
-Flight::route('POST /posts', function(){
-    $user = Flight::get('User');
-  Flight::json(Flight::postService()->add($user, Flight::request()->data->getData()));
+Flight::route('POST /posts/@id', function($user_id){
+  Flight::json(Flight::postService()->add($user_id, Flight::request()->data->getData()));
 });
 
 /**
 * update post
 */
+
 Flight::route('PUT /posts/@id', function($id){
   $data = Flight::request()->data->getData();
   $user = Flight::get('User');
@@ -41,13 +46,12 @@ Flight::route('PUT /posts/@id', function($id){
 * delete post
 */
 Flight::route('DELETE /posts/@id', function($id){
-    $user = Flight::get('User');
-  Flight::postService()->delete($user, $id);
+  Flight::postService()->delete($id);
   Flight::json(["message" => "deleted"]);
 });
 
-Flight::route('GET /userPost/@id', function($id){
-    Flight::json(Flight::postService()->get_posts_by_user_id($id));
-})
+Flight::route('GET /postByUser/@user_id', function($user_id){    
+  Flight::json(Flight::postService()->get_user_posts($user_id));
+});
 
 ?>

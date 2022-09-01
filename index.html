@@ -53,7 +53,7 @@
           </label>
           <textarea class="form-control" id="textForm" rows="3"></textarea>
           <div>
-            <button id="post-button" type="button" class="btn btn-primary" onclick="PostService.add()">
+            <button id="post-button" type="submit" class="btn btn-primary" onclick="PostService.add()">
               Post
             </button>
             <button id="cancel-button" type="button" class="btn btn-primary">
@@ -74,7 +74,7 @@
 <script src="js/post-service.js"></script>
 <script src="js/user-service.js"></script>
   </body>
-  
+
   <!-- footer -->
   <footer class="container-fluid" id="footer">
     <div class="container">
@@ -90,5 +90,6 @@
     } else {
       window.location.replace("login.html");
     }
+    
   </script>
 </html>
