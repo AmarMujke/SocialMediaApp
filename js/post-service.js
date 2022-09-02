@@ -4,7 +4,7 @@ var PostService = {
 
     $("#postList").validate({
       submitHandler: function (form) {
-        var entity = Object.fromEntries(new FormData(form).entries());
+        var entity = Object();
         if (!isNaN(entity.id)) {
           // update method
           var id = entity.id;
@@ -177,7 +177,7 @@ var PostService = {
     });
   },
 
-  add: function (post) {
+  add: function () {
     var token = localStorage.getItem("token");
     var user_id;
     var jsonPayload = null;
@@ -200,6 +200,8 @@ var PostService = {
       console.log(user_id.id);
     }
     var text = $("#textForm").val();
+    console.log(text);
+    post = [text];
 
     $.ajax({
       url: "rest/posts/" + user_id.id,
@@ -207,11 +209,11 @@ var PostService = {
       beforeSend: function (xhr) {
         xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
       },
-      data: JSON.stringify(post),
+      data: JSON.stringify({ text: text }),
       contentType: "application/json",
       dataType: "json",
       success: function (result) {
-        PostService.listByUser();
+        PostService.list();
         toastr.success("Added !");
       },
     });

@@ -20,7 +20,7 @@ Flight::route('GET /postsDesc', function(){
 /**
 * List invidiual post
 */
-Flight::route('GET /posts/@id', function($id){
+Flight::route('GET /posts/@id/', function($id){
     $user = Flight::get('User');
   Flight::json(Flight::postService()->get_by_id($user, $id));
 });
@@ -28,7 +28,7 @@ Flight::route('GET /posts/@id', function($id){
 /**
 * add post
 */
-Flight::route('POST /posts/@id', function($user_id){
+Flight::route('POST /posts/@id/', function($user_id){
   Flight::json(Flight::postService()->add($user_id, Flight::request()->data->getData()));
 });
 

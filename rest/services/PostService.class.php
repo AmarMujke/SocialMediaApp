@@ -15,7 +15,8 @@ class PostService extends BaseService{
 
    public function add($user_id, $post){
     $post['user_id'] = $user_id;
-    return parent::add($user_id, $post);
+
+    return parent::add($user_id,$post);
   }
 
   public function get_user_posts ($user_id){
