@@ -1,7 +1,7 @@
 var PostService = {
   init: function () {
     PostService.list();
-
+    UserService.list();
     $("#postList").validate({
       submitHandler: function (form) {
         var entity = Object();
@@ -59,7 +59,9 @@ var PostService = {
             <div class="row">
                 <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
                     <div class="post-type post-img id="userName">
-                        <a href="#" style="color: black; text-decoration:none;"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" id="postImg" style="width:50%;" class="img-responsive" alt="image post">neki user</a>
+                        <a href="#" style="color: black; text-decoration:none;"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" id="postImg" style="width:50%;" class="img-responsive" alt="image post">` +
+            data[i].userName +
+            `</a>
                     </div>
                     <div class="author-info author-info-2" id = "post" style="text-align:center; max-width: fit-content; border:none;">
                         <ul class="list-inline" style="text-align:center;">
@@ -71,7 +73,9 @@ var PostService = {
             `</strong></div>
                                 </li>
                             <li>
-                               <button class="info" style=" width: fit-content; border-radius: 20%; background-color: #02c39a !important; border:none;"><img src="assets/down.png" width="40px" alt=""></button>
+                               <button  onclick="PostService.like(` +
+            data[i].id +
+            `)"class="info" style=" width: fit-content; border-radius: 20%; background-color: #02c39a !important; border:none;"><img src="assets/down.png" width="40px" alt=""></button>
                             </li>
                             </ul>
                              <ul class="list-inline" style="text-align:center;">
@@ -108,6 +112,24 @@ var PostService = {
     });
   },
 
+  like: function (id) {
+    $.ajax({
+      url: "rest/posts/" + id,
+      beforeSend: function (xhr) {
+        xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+      },
+      type: "GET",
+      success: function (result) {
+        console.log(result[0]);
+        newLikes = parseInt(result.likes);
+        newLikes++;
+
+        console.log(newLikes);
+        toastr.success("");
+      },
+    });
+  },
+
   listByUser: function (user_id) {
     $.ajax({
       url: "rest/postByUser/" + user_id,
@@ -125,7 +147,9 @@ var PostService = {
             <div class="row">
                 <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
                     <div class="post-type post-img id="userName">
-                        <a href="#" style="color: black; text-decoration:none;"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" id="postImg" style="width:50%;" class="img-responsive" alt="image post">neki user</a>
+                        <a href="#" style="color: black; text-decoration:none;"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" id="postImg" style="width:50%;" class="img-responsive" alt="image post">` +
+            data[i].userName +
+            `</a>
                     </div>
                     <div class="author-info author-info-2" id = "post" style="text-align:center; max-width: fit-content; border:none;">
                         <ul class="list-inline" style="text-align:center;">
@@ -161,9 +185,9 @@ var PostService = {
             `
                 </div>
             </div>
-         <button onClick = "PostService.delete(` +
+         <button onClick="PostService.delete(` +
             data[i].id +
-            `)"; class="info" style=" width: fit-content; border-radius: 20%;  background-color: #02c39a !important; border:none;">delete</button>
+            `)" class="info" style=" width: fit-content; border-radius: 20%;  background-color: #02c39a !important; border:none;">delete</button>
         </article>
        
              `;
@@ -180,6 +204,7 @@ var PostService = {
   add: function () {
     var token = localStorage.getItem("token");
     var user_id;
+
     var jsonPayload = null;
     if (token) {
       var base64Url = token.split(".")[1];
@@ -196,20 +221,20 @@ var PostService = {
 
     if (jsonPayload) {
       console.log(jsonPayload);
-      user_id = JSON.parse(jsonPayload);
-      console.log(user_id.id);
+      user = JSON.parse(jsonPayload);
+      console.log(user.id);
     }
     var text = $("#textForm").val();
     console.log(text);
     post = [text];
 
     $.ajax({
-      url: "rest/posts/" + user_id.id,
+      url: "rest/posts/" + user.id,
       type: "POST",
       beforeSend: function (xhr) {
         xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
       },
-      data: JSON.stringify({ text: text }),
+      data: JSON.stringify({ text: text, userName: user.name }),
       contentType: "application/json",
       dataType: "json",
       success: function (result) {
