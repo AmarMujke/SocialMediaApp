@@ -65,11 +65,11 @@ var PostService = {
                     </div>
                     <div class="author-info author-info-2" id = "post" style="text-align:center; max-width: fit-content; border:none;">
                         <ul class="list-inline" style="text-align:center;">
-                            <li style="float: right;">
+                            <li style="float:right; margin-right:6%" >
                                 <div class="info">
-                                    <p>Dislikes:</p>
+                                    <p>Likes:</p>
                                     <strong>` +
-            data[i].dislikes +
+            data[i].likes +
             `</strong></div>
                                 </li>
                             <li>
@@ -81,9 +81,9 @@ var PostService = {
                              <ul class="list-inline" style="text-align:center;">
                             <li style="float: right;">
                                 <div class="info">
-                                    <p>Likes:</p>
+                                    <p>Dislikes:</p>
                                     <strong>` +
-            data[i].likes +
+            data[i].dislikes +
             `</strong></div>
                             </li>
                             <li>
@@ -112,23 +112,23 @@ var PostService = {
     });
   },
 
-  like: function (id) {
-    $.ajax({
-      url: "rest/posts/" + id,
-      beforeSend: function (xhr) {
-        xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
-      },
-      type: "GET",
-      success: function (result) {
-        console.log(result[0]);
-        newLikes = parseInt(result.likes);
-        newLikes++;
+  //   like: function (id) {
+  //     $.ajax({
+  //       url: "rest/posts/" + id,
+  //       beforeSend: function (xhr) {
+  //         xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+  //       },
+  //       type: "GET",
+  //       success: function (result) {
+  //         console.log(result[0]);
+  //         newLikes = parseInt(result.likes);
+  //         newLikes++;
 
-        console.log(newLikes);
-        toastr.success("");
-      },
-    });
-  },
+  //         console.log(newLikes);
+  //         toastr.success("");
+  //       },
+  //     });
+  //   },
 
   listByUser: function (user_id) {
     $.ajax({
@@ -155,9 +155,9 @@ var PostService = {
                         <ul class="list-inline" style="text-align:center;">
                             <li style="float: right;">
                                 <div class="info">
-                                    <p>Dislikes:</p>
+                                    <p>Likes:</p>
                                     <strong>` +
-            data[i].dislikes +
+            data[i].likes +
             `</strong></div>
                                 </li>
                             <li>
@@ -167,9 +167,9 @@ var PostService = {
                              <ul class="list-inline" style="text-align:center;">
                             <li style="float: right;">
                                 <div class="info">
-                                    <p>Likes:</p>
+                                    <p>Dislikes:</p>
                                     <strong>` +
-            data[i].likes +
+            data[i].dislikes +
             `</strong></div>
                             </li>
                             <li>

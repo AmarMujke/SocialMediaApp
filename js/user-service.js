@@ -1,9 +1,7 @@
 var UserService = {
   init: function () {
     var token = localStorage.getItem("token");
-    if (token) {
-      window.location.replace("index.html");
-    }
+
     $("#login-form").validate({
       submitHandler: function (form) {
         var entity = Object.fromEntries(new FormData(form).entries());
@@ -12,23 +10,32 @@ var UserService = {
     });
   },
 
-  // register: function () {
-  // var token = localStorage.getItem("token");
-  // var user_id;
+  addUser: function (entity) {
+    if (!entity) {
+      $("#register-form").validate({
+        submitHandler: function (form) {
+          var entity = Object.fromEntries(new FormData(form).entries());
+          UserService.addUser(entity);
+        },
+      });
+    }
+    $.ajax({
+      url: "rest/users",
+      type: "POST",
 
-  // var jsonPayload = null;
-  // if (token) {
-  //   var base64Url = token.split(".")[1];
-  //   var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-  //   var jsonPayload = decodeURIComponent(
-  //     atob(base64)
-  //       .split("")
-  //       .map(function (c) {
-  //         return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-  //       })
-  //       .join("")
-  //   );
-  // }
+      data: JSON.stringify(entity),
+      contentType: "application/json",
+      dataType: "json",
+      success: function (result) {
+        console.log(result);
+        localStorage.setItem("token", result.token);
+        window.location.replace("login.html");
+      },
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
+        toastr.error(XMLHttpRequest.responseJSON.message);
+      },
+    });
+  },
 
   login: function (entity) {
     $.ajax({
@@ -72,6 +79,22 @@ var UserService = {
       },
     });
   },
+
+  //   register: function () {
+
+  //     var jsonPayload = null;
+  //     if (token) {
+  //       var base64Url = token.split(".")[1];
+  //       var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+  //       var jsonPayload = decodeURIComponent(
+  //         atob(base64)
+  //           .split("")
+  //           .map(function (c) {
+  //             return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+  //           })
+  //           .join("")
+  //       );
+  //     },
 
   list: function () {
     var token = localStorage.getItem("token");

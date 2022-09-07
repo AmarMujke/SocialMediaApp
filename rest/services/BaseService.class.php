@@ -19,6 +19,11 @@ abstract class BaseService {
     return $this->dao->add($entity);
   }
 
+   public function addUser($pass,$entity){
+    $entity['password'] = $pass;
+    return $this->dao->add($entity);
+  }
+
   public function update($user, $id, $entity){
     return $this->dao->update($id, $entity);
   }

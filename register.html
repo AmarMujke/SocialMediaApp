@@ -18,17 +18,25 @@
   <body>
     <main>
       <div class="container marketing" style="margin-top: 100px; width: 100vh">
-        <!-- Three columns of text below the carousel -->
         <div class="row" style="border: 1px black solid">
-          <h3 style="text-align: center">Login</h3>
-          <form id="login-form" style="padding: 5%">
+          <h3 style="text-align: center">Register</h3>
+          <form id="register-form" style="padding: 5%" id="register">
+            <div class="mb-3">
+              <label class="form-label">User Name</label>
+              <input
+                type="text"
+                name="name"
+                class="form-control"
+                placeholder="User Name"
+              />
+            </div>
             <div class="mb-3">
               <label class="form-label">Email address</label>
               <input
-                type="email"
+                type="text"
                 name="email"
                 class="form-control"
-                value="amar.mujka@outlook.com"
+                placeholder="email@example.com"
               />
             </div>
             <div class="mb-3">
@@ -37,22 +45,21 @@
                 type="password"
                 name="password"
                 class="form-control"
-                value="123"
+                placeholder="password"
               />
             </div>
             <button
               style="background-color: #02c39a; border: none"
               type="submit"
               class="btn btn-primary"
+              onclick="UserService.addUser()"
             >
-              Login
+              Register
             </button>
             <p style="float: right">
-              Don't have an account?
-              <a
-                style="text-decoration: none; color: #02c39a"
-                href="register.html"
-                >REGISTER</a
+              Have an account?
+              <a style="text-decoration: none; color: #02c39a" href="login.html"
+                >Login</a
               >
             </p>
           </form>

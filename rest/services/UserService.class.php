@@ -7,6 +7,10 @@ class UserService extends BaseService{
   public function __construct(){
     parent::__construct(new UserDao());
   }
-
+  
+ public function addUser($pass, $user){
+    $user['password'] = $pass;
+    return parent::addUser($pass,$user);
+  }
 }
 ?>

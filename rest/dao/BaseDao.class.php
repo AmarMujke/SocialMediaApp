@@ -67,6 +67,24 @@ class BaseDao{
     return $entity;
   }
 
+  public function addUser($entity){
+    $query = "INSERT INTO ".$this->table_name." (";
+    foreach ($entity as $column => $value) {
+      $query .= $column.", ";
+    }
+    $query = substr($query, 0, -2);
+    $query .= ") VALUES (";
+    foreach ($entity as $column => $value) {
+      $query .= ":".$column.", ";
+    }
+    $query = substr($query, 0, -2);
+    $query .= ")";
+
+    $stmt= $this->conn->prepare($query);
+    $stmt->execute($entity); // sql injection prevention
+    return $entity;
+  }
+
   public function update($id, $entity, $id_column = "id"){
     $query = "UPDATE ".$this->table_name." SET ";
     foreach($entity as $name => $value){

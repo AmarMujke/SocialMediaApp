@@ -30,7 +30,7 @@ Flight::map('query', function($name, $default_value = NULL){
 //middleware method for login
 Flight::route('/*', function(){
   return TRUE;
-  //perform JWT decode
+
   $path = Flight::request()->url;
   if ($path == '/login' || $path == '/docs.json') return TRUE; // exclude login route from middleware
 

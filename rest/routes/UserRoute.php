@@ -60,8 +60,9 @@ $user = Flight::get('User');
 
 // create new user 
 Flight::route('POST /users', function(){
-  $user = Flight::get('User');
-Flight::json(Flight::userService()->add($user, Flight::request()->data->getData()));
+$login = Flight::request()->data->getData();
+$pass = md5($login['password']);
+Flight::json(Flight::userService()->addUser($pass, Flight::request()->data->getData()));
 });
 
 
