@@ -16,6 +16,14 @@ class PostDao extends BaseDao{
   public function get_user_posts($user_id){
     return $this->query("SELECT * FROM Post WHERE user_id = :user_id ORDER BY id DESC", ['user_id' => $user_id]);
   }
+
+  public function like($id){
+    return $this->query("UPDATE Post SET likes = likes+1  WHERE id = :id", ['id' => $id]);
+  }
+
+   public function dislike($id){
+    return $this->query("UPDATE Post SET dislikes = dislikes+1  WHERE id = :id", ['id' => $id]);
+  }
 }
 
 ?>

@@ -73,9 +73,9 @@ var PostService = {
             `</strong></div>
                                 </li>
                             <li>
-                               <button  onclick="PostService.like(` +
+                              <button onClick="PostService.like(` +
             data[i].id +
-            `)"class="info" style=" width: fit-content; border-radius: 20%; background-color: #02c39a !important; border:none;"><img src="assets/down.png" width="40px" alt=""></button>
+            `)" class="info" style=" width: fit-content; border-radius: 20%;  background-color: #02c39a !important; border:none;"><img src="assets/up.png" width="40px" alt=""></button>
                             </li>
                             </ul>
                              <ul class="list-inline" style="text-align:center;">
@@ -87,8 +87,9 @@ var PostService = {
             `</strong></div>
                             </li>
                             <li>
-                             <button class="info" style=" width: fit-content; border-radius: 20%;  background-color: #02c39a !important; border:none;"><img src="assets/up.png" width="40px" alt=""></button>
-                            </li>
+            <button onClick="PostService.dislike(` +
+            data[i].id +
+            `)" class="info" style=" width: fit-content; border-radius: 20%; background-color: #02c39a !important; border:none;"><img src="assets/down.png" width="40px" alt=""></button>                            </li>
                         </ul>
                     </div>
                 </div>
@@ -112,23 +113,33 @@ var PostService = {
     });
   },
 
-  //   like: function (id) {
-  //     $.ajax({
-  //       url: "rest/posts/" + id,
-  //       beforeSend: function (xhr) {
-  //         xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
-  //       },
-  //       type: "GET",
-  //       success: function (result) {
-  //         console.log(result[0]);
-  //         newLikes = parseInt(result.likes);
-  //         newLikes++;
+  like: function (id) {
+    $.ajax({
+      url: "rest/posts/" + id,
+      type: "PUT",
+      beforeSend: function (xhr) {
+        xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+      },
+      success: function (result) {
+        PostService.list();
+        toastr.success("LIKED!");
+      },
+    });
+  },
 
-  //         console.log(newLikes);
-  //         toastr.success("");
-  //       },
-  //     });
-  //   },
+  dislike: function (id) {
+    $.ajax({
+      url: "rest/posts/dislike/" + id,
+      type: "PUT",
+      beforeSend: function (xhr) {
+        xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+      },
+      success: function (result) {
+        PostService.list();
+        toastr.success("LIKED!");
+      },
+    });
+  },
 
   listByUser: function (user_id) {
     $.ajax({

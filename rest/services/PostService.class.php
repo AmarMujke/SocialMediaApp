@@ -26,5 +26,12 @@ class PostService extends BaseService{
   public function delete($id){
     return $this->dao->delete($id);
   }
+
+  public function like($id){
+    return $this->dao->like($id);
+  }
+  public function dislike($id){
+    return $this->dao->dislike($id);
+  }
 }
 ?>

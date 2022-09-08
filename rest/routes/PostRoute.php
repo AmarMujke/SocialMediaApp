@@ -38,8 +38,12 @@ Flight::route('POST /posts/@id/', function($user_id){
 
 Flight::route('PUT /posts/@id', function($id){
   $data = Flight::request()->data->getData();
-  $user = Flight::get('User');
-  Flight::json(Flight::postService()->update($user, $id, $data));
+  Flight::json(Flight::postService()->like($id));
+});
+
+Flight::route('PUT /posts/dislike/@id', function($id){
+  $data = Flight::request()->data->getData();
+  Flight::json(Flight::postService()->dislike($id));
 });
 
 /**
