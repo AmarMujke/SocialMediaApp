@@ -172,7 +172,6 @@ var PostService = {
             `</strong></div>
                                 </li>
                             <li>
-                               <button class="info" style=" width: fit-content; border-radius: 20%; background-color: #02c39a !important; border:none;"><img src="assets/down.png" width="40px" alt=""></button>
                             </li>
                             </ul>
                              <ul class="list-inline" style="text-align:center;">
@@ -184,7 +183,6 @@ var PostService = {
             `</strong></div>
                             </li>
                             <li>
-                             <button class="info" style=" width: fit-content; border-radius: 20%;  background-color: #02c39a !important; border:none;"><img src="assets/up.png" width="40px" alt=""></button>
                             </li>
                         </ul>
                     </div>
