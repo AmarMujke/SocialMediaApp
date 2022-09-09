@@ -14,10 +14,10 @@ Flight::register('userDao', 'UserDao');
 Flight::register('postService', 'PostService');
 Flight::register('userService', 'UserService');
 
-// Flight::map('error', function(Exception $ex){
-//     // Handle error
-//     Flight::json(['message' => $ex->getMessage()], 500);
-// });
+Flight::map('error', function(Exception $ex){
+    // Handle error
+    Flight::json(['message' => $ex->getMessage()], 500);
+});
 
 /* utility function for reading query parameters from URL */
 Flight::map('query', function($name, $default_value = NULL){

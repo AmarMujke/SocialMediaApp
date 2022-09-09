@@ -24,6 +24,10 @@ use Firebase\JWT\Key;
 *     )
 * )
 */
+
+/**
+ * login function
+ */
 Flight::route('POST /login', function(){
     $login = Flight::request()->data->getData();
     $user = Flight::userDao()->get_user_by_email($login['email']);
@@ -64,7 +68,5 @@ $login = Flight::request()->data->getData();
 $pass = md5($login['password']);
 Flight::json(Flight::userService()->addUser($pass, Flight::request()->data->getData()));
 });
-
-
 
 ?>

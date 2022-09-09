@@ -31,7 +31,9 @@ class BaseDao{
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
-
+  /**
+   * get entity by id
+   */
   public function get_by_id($id){
     $stmt = $this->conn->prepare("SELECT * FROM ".$this->table_name." WHERE id = :id");
     $stmt->execute(['id' => $id]);
@@ -40,7 +42,7 @@ class BaseDao{
   }
 
   /**
-  * Delete post from the database
+  * Delete entity from the database
   */ 
   public function delete($id){
     $stmt = $this->conn->prepare("DELETE FROM ".$this->table_name." WHERE id=:id");
@@ -48,6 +50,9 @@ class BaseDao{
     $stmt->execute();
   }
 
+  /**
+   * add enetity(in this case post) to database
+   */
   public function add($entity){
     $query = "INSERT INTO ".$this->table_name." (";
     foreach ($entity as $column => $value) {
@@ -67,6 +72,9 @@ class BaseDao{
     return $entity;
   }
 
+  /**
+   * function to add user to table
+   */
   public function addUser($entity){
     $query = "INSERT INTO ".$this->table_name." (";
     foreach ($entity as $column => $value) {
@@ -85,6 +93,9 @@ class BaseDao{
     return $entity;
   }
 
+  /**
+   * update entity
+   */
   public function update($id, $entity, $id_column = "id"){
     $query = "UPDATE ".$this->table_name." SET ";
     foreach($entity as $name => $value){

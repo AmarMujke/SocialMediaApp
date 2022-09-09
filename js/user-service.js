@@ -1,7 +1,5 @@
 var UserService = {
   init: function () {
-    var token = localStorage.getItem("token");
-
     $("#login-form").validate({
       submitHandler: function (form) {
         var entity = Object.fromEntries(new FormData(form).entries());
@@ -97,7 +95,6 @@ var UserService = {
           .join("")
       );
     }
-
     if (jsonPayload) {
       console.log(jsonPayload);
       user = JSON.parse(jsonPayload);

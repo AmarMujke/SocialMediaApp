@@ -2,20 +2,6 @@ var PostService = {
   init: function () {
     PostService.list();
     UserService.list();
-    $("#postList").validate({
-      submitHandler: function (form) {
-        var entity = Object();
-        if (!isNaN(entity.id)) {
-          // update method
-          var id = entity.id;
-          delete entity.id;
-          PostService.update(id, entity);
-        } else {
-          // add method
-          PostService.add(entity);
-        }
-      },
-    });
 
     var token = localStorage.getItem("token");
     var user_id;
