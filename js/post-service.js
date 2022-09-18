@@ -234,6 +234,7 @@ var PostService = {
       dataType: "json",
       success: function (result) {
         PostService.list();
+        window.location.reload();
         toastr.success("Added !");
       },
     });
