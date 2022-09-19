@@ -20,9 +20,7 @@ var PostService = {
     }
 
     if (jsonPayload) {
-      console.log(jsonPayload);
       user_id = JSON.parse(jsonPayload);
-      console.log(user_id.id);
     }
 
     PostService.listByUser(user_id.id);
@@ -215,12 +213,10 @@ var PostService = {
     }
 
     if (jsonPayload) {
-      console.log(jsonPayload);
       user = JSON.parse(jsonPayload);
-      console.log(user.id);
     }
     var text = $("#textForm").val();
-    console.log(text);
+
     post = [text];
 
     $.ajax({
@@ -273,35 +269,6 @@ var PostService = {
           window.location.reload();
         });
         toastr.success("Post deleted!");
-      },
-    });
-  },
-
-  choose_color: function (color) {
-    $('#addNoteForm input[name="color"]').val(color);
-  },
-
-  share: function (id) {
-    $('#shareNoteForm input[name="note_id"]').val(id);
-    $("#shareModal").modal("show");
-  },
-
-  share_note: function () {
-    var note_id = $('#shareNoteForm input[name="note_id"]').val();
-    var recipient = $('#shareNoteForm input[name="recipient"]').val();
-
-    $.ajax({
-      url: "rest/notes/" + note_id + "/share",
-      type: "POST",
-      beforeSend: function (xhr) {
-        xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
-      },
-      data: JSON.stringify({ email: recipient }),
-      contentType: "application/json",
-      dataType: "json",
-      success: function (result) {
-        $("#shareModal").modal("hide");
-        toastr.success("Note shared!");
       },
     });
   },

@@ -25,7 +25,6 @@ var UserService = {
       contentType: "application/json",
       dataType: "json",
       success: function (result) {
-        console.log(result);
         localStorage.setItem("token", result.token);
         window.location.replace("login.html");
       },
@@ -44,7 +43,6 @@ var UserService = {
       contentType: "application/json",
       dataType: "json",
       success: function (result) {
-        console.log(result);
         localStorage.setItem("token", result.token);
         window.location.replace("index.html");
       },
@@ -96,9 +94,7 @@ var UserService = {
       );
     }
     if (jsonPayload) {
-      console.log(jsonPayload);
       user = JSON.parse(jsonPayload);
-      console.log(user.id);
     }
     $.ajax({
       url: "rest/users/" + user.id,
@@ -107,7 +103,6 @@ var UserService = {
         xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
       },
       success: function (result) {
-        console.log(result);
         $("#profile").html("");
         var html = "";
 
